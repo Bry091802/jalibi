@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 const Welcome = () => {
     return (
         <>
-            <main className="w-full h-screen ">
-            <h1 className="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowra text-white">Order and Pay Here</h1>
+            <main className="w-full h-screen relative">
+            <h1 className="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap text-white">Order and Pay Here</h1>
             <img src={`${imgPath}/welcomebanner.jpg`} 
                 alt="" 
                 className="h-full block object-cover w-full" />
