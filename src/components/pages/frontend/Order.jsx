@@ -28,7 +28,7 @@ const Order = () => {
                     <SliderBanner />
         <div className="grid grid-rows-[auto,_1fr,_auto] min-h-[calc(100vh-200px)]">
                     <MenuTitle category={category}/>
-            <section className="grid grid-cols-[150px,_1fr] bg-primary px-3">
+            <section className="grid grid-cols-[150px,_1fr] bg-myred px-3">
                 <aside className="m-1 bg-white rounded-md h-[60vh] overflow-y-scroll custom-scroll">
                     <SideNav setCategory={setCategory}/>
                 </aside>
@@ -44,9 +44,9 @@ const Order = () => {
                 </main>
             </section>
 
-            <div className="flex justify-between items-center bg-primary text-white p-1">
+            <div className="flex justify-between items-center bg-myred text-white p-1">
 
-                <button className="px-4 py-2 bg-white text-primary border border-white rounded-md ">
+                <button className="px-4 py-2 bg-white text-myred border border-white rounded-md ">
                     Cancel
                 </button>
 
@@ -56,10 +56,10 @@ const Order = () => {
                 <h4 className="mb-0">P {getTotal.toFixed(2)}</h4>
                 </div>
                 
-               <button className="px-4 py-2 bg-secondary rounded-md relative" onClick={() => setShowCart(true)}>
+               <button className="px-4 py-2 bg-myyellow rounded-md relative" onClick={() => setShowCart(true)}>
                     {cartData.length > 0 && (
                     <span className="absolute -left-2 -top-2 text-[12px] bg-white 
-                    text-primary rounded-full size-[20px] font-bold grid place-content-center">
+                    text-myred rounded-full size-[20px] font-bold grid place-content-center">
                         {cartData.length}
                     </span>)}
                     

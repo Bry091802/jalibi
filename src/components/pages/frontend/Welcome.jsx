@@ -13,7 +13,7 @@ const Welcome = () => {
                 className="h-full block object-cover w-full" />
 
             <div className="absolute w-full bottom-0 left-0">
-                <div className="bg-primary text-white text-center p-4 font-bold">
+                <div className="bg-myred text-white text-center p-4 font-bold">
                     <Link to="/order" className="text-4xl flex justify-center items-center gap-5"><PointerIcon size={30} className="rotate-[-30deg]"/>Tap Here to Start
                     </Link>
                 </div>
@@ -25,8 +25,8 @@ const Welcome = () => {
                             Pay with Cash <br /> or Card
                         </h4>
                     </div>
-                    <div className=" pl-4 border-l-4 border-primary basis-[300px]">
-                        <h5 className=" text-primary mb-1">For other paymnets</h5>
+                    <div className=" pl-4 border-l-4 border-myred basis-[300px]">
+                        <h5 className=" text-myred mb-1">For other paymnets</h5>
                         <p className="text-xs text-black opacity-60">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque iste beatae sunt porro corporis iusto cupiditate culpa ex exercitationem illum.</p>
                     </div>
                 </div>
