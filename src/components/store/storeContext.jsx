@@ -16,13 +16,10 @@ const initVal = {
   isAnimating: true,
 };
 
-
 const StoreContext = React.createContext();
-
 
 const StoreProvider = (props) => {
   const [store, dispatch] = React.useReducer(StoreReducer, initVal);
-
 
   return (
     <StoreContext.Provider value={{ store, dispatch }}>
@@ -31,8 +28,4 @@ const StoreProvider = (props) => {
   );
 };
 
-
 export { StoreContext, StoreProvider };
-
-
-
