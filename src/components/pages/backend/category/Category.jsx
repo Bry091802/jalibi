@@ -16,9 +16,11 @@ import ModalAddCategory from "./ModalAddCategory";
 
 const Category = () => {
   const { dispatch, store } = React.useContext(StoreContext);
+  const [isCategoryEdit, setIsCategoryEdit] = React.useState(null);
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
+    setIsCategoryEdit(null);
   };
   return (
     <>
@@ -35,7 +37,10 @@ const Category = () => {
                   Add New
                 </button>
               </div>
-              <CategoryTable />
+              <CategoryTable
+                isCategoryEdit={isCategoryEdit}
+                setIsCategoryEdit={setIsCategoryEdit}
+              />
             </div>
 
             <Footer />
@@ -46,7 +51,12 @@ const Category = () => {
       {store.error && <ModalError />}
       {store.success && <ToastSucess />}
 
-      {store.isAdd && <ModalAddCategory />}
+      {store.isAdd && (
+        <ModalAddCategory
+          isCategoryEdit={isCategoryEdit}
+          setIsCategoryEdit={setIsCategoryEdit}
+        />
+      )}
     </>
   );
 };
