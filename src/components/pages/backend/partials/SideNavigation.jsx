@@ -7,6 +7,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 import React from "react";
+import { FaCog } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 const SideNavigation = ({ menu }) => {
@@ -30,6 +31,11 @@ const SideNavigation = ({ menu }) => {
       title: "Category",
       slug: "/admin/category",
       icon: <UtensilsCrossed size={16} />,
+    },
+    {
+      title: "Settings",
+      slug: "/admin/settings",
+      icon: <FaCog size={16} />,
     },
   ];
 

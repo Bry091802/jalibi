@@ -12,7 +12,8 @@ import { GrFormClose } from "react-icons/gr";
 import ButtonSpinner from "../spinner/ButtonSpinner";
 import { MdDelete } from "react-icons/md";
 import { StoreContext } from "@/components/store/storeContext";
-import { setIsDelete } from '@/components/store/storeAction';
+import { setError, setIsAdd, setMessage, setSuccess } from "@/components/store/storeAction";
+
 
 const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -28,14 +29,16 @@ const ModalDelete = ({ setIsDelete, mysqlApiDelete, queryKey, item }) => {
       dispatch(setIsDelete(false));
 
       if (!data.success) {
-        // dispatch(setError(true));
-        // dispatch(setMessage(data.error));
         console.log("May error!");
+        dispatch(setError(true));
+        dispatch(setMessage(data.error));
+        dispatch(setSuccess(false));
       } else {
-        setIsDelete(false);
+        dispatch(setIsDelete(false));
         console.log("Naysuu!");
-        // dispatch(setSuccess(true));
-        // dispatch(setMessage(successMsg));
+        dispatch(setIsAdd(false));
+        dispatch(setSuccess(true));
+        dispatch(setMessage("Successfully Deleted!"));
       }
     },
   });

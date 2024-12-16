@@ -15,7 +15,7 @@ const TableLoader = ({ count = 15, cols = 3 }) => {
     box.push(
       <div
         key={i}
-        className=" bg-gray-300 p-1.5 h-[7px] w-full rounded-md relative loading-bar overflow-hidden"
+        className=" bg-gray-400 p-1.5 h-[7px] w-full rounded-md relative loading-bar overflow-hidden"
       ></div>
     );
   }

@@ -1,6 +1,7 @@
 import { GetFocus } from "@/components/helpers/functions-general";
-import { setError } from "@/store/storeAction";
-import { StoreContext } from "@/store/storeContext";
+import { setError } from "@/components/store/storeAction";
+import { StoreContext } from "@/components/store/storeContext";
+
 import React from "react";
 const ModalError = () => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -20,9 +21,9 @@ const ModalError = () => {
 
   return (
     <>
-      <div className="drop-shadow-2xl bg-dark/40 h-screen w-full fixed z-[99] top-0 right-0 bottom-0 left-0"></div>
+      <div className="drop-shadow-2xl bg-light/40 h-screen w-full fixed z-[99] top-0 right-0 bottom-0 left-0"></div>
       <div
-        className={`fixed z-[99] top-10 left-1/2 -translate-x-1/2 w-full flex items-center justify-between gap-2 max-w-sm p-4 mb-4 text-dark bg-white rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]  transform duration-200 ease-in-out ${animate}`}
+        className={`fixed z-[99] top-10 left-1/2 -translate-x-1/2 w-full flex items-center justify-between gap-2 max-w-sm p-4 mb-4 text-light bg-white rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)]  transform duration-200 ease-in-out ${animate}`}
       >
         <div className="flex items-center gap-3">
           <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-orange-100 bg-orange-500 rounded-lg ">
@@ -37,7 +38,7 @@ const ModalError = () => {
             </svg>
             <span className="sr-only">Warning icon</span>
           </div>
-          <p className="flex items-center gap-3 mb-0 animate-slideUp">
+          <p className="flex items-center gap-3 mb-0 animate-slideUp ">
             {store.message}
           </p>
         </div>

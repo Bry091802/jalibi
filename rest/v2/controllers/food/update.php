@@ -20,10 +20,10 @@ if (array_key_exists("foodid", $_GET)) {
   $food->food_datetime = date("Y-m-d H:i:s");
   checkId($food->food_aid);
 
-//checks current data to avoid same entries from being updated
-// $food_name_old = checkIndex($data, 'food_name_old');
-// compareName($food, $food_name_old, $food->food_name);
-// checkId($food->food_aid);
+  //checks current data to avoid same entries from being updated
+  // $food_name_old = checkIndex($data, 'food_name_old');
+  // compareName($food, $food_name_old, $food->food_name);
+  // checkId($food->food_aid);
 
   // update
   $query = checkUpdate($food);
