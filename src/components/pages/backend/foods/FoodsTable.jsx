@@ -13,6 +13,10 @@ import { Archive, ArchiveRestore, FilePenLine, Trash2 } from "lucide-react";
 import React from "react";
 import LoadMore from "../partials/LoadMore";
 import ModalDelete from "@/components/partials/modal/ModalDelete";
+import TableLoader from "../partials/TableLoader";
+import IconNoData from "../partials/IconNoData";
+import IconServerError from "../partials/IconServerError";
+import FetchingSpinner from "@/components/partials/spinner/FetchingSpinner";
 
 const FoodsTable = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -38,6 +42,7 @@ const FoodsTable = ({ setItemEdit }) => {
   };
 
   const {
+    isLoading,
     isFetching,
     error,
     data: result,
@@ -51,9 +56,8 @@ const FoodsTable = ({ setItemEdit }) => {
   return (
     <>
       <div className="p-4 bg-secondary rounded-md mt-10 border border-line relative">
-        {/* <SpinnerTable /> */}
+        {isFetching && !isLoading && <FetchingSpinner />}
         <div className="table-wrapper custom-scroll">
-          {/* <TableLoader count={40} cols={10} /> */}
           <table>
             <thead>
               <tr>
@@ -67,6 +71,27 @@ const FoodsTable = ({ setItemEdit }) => {
             </thead>
 
             <tbody>
+              {isLoading && (
+                <tr>
+                  <td colSpan="100%">
+                    <TableLoader count={20} cols={5} />
+                  </td>
+                </tr>
+              )}
+              {result?.count === 0 && (
+                <tr>
+                  <td colSpan="100%">
+                    <IconNoData />
+                  </td>
+                </tr>
+              )}
+              {error && (
+                <tr>
+                  <td colSpan="100%">
+                    <IconServerError />
+                  </td>
+                </tr>
+              )}
               {result?.count > 0 &&
                 result.data.map((item, key) => (
                   <tr key={key}>

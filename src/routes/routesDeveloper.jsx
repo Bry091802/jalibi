@@ -32,7 +32,7 @@ export const routeDeveloper = [
     element: <Role />,
   },
   {
-    route: `/developer/user`,
+    route: `/developer/users`,
     element: <User />,
   },
   {
