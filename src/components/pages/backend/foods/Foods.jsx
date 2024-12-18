@@ -27,9 +27,9 @@ const Foods = () => {
           <SideNavigation menu="foods" />
           <main>
             <Header title="Foods" subtitle="Manage List of Foods" />
-            <div className="p-8">
+            <div className="px-8 pt-8">
               <div className="flex justify-between items-center">
-                <SearchBar />
+                <div></div>
                 <button className="btn btn-add" onClick={handleAdd}>
                   <Plus size={16} />
                   Add New

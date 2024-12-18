@@ -40,6 +40,7 @@ const SearchBarWithFilterStatus = ({
 
   const handleChangeStatus = (e, setStatusFilter) => {
     setStatusFilter(e.target.value);
+    search.current.value = "";
     setIsFilter(false);
     if (e.target.value !== "") {
       setIsFilter(true);

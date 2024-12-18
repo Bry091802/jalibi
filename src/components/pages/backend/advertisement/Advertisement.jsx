@@ -14,9 +14,11 @@ import ModalValidation from "../partials/modals/ModalValidation";
 
 const Advertisement = () => {
   const { dispatch, store } = React.useContext(StoreContext);
+  const [isAdvertisementEdit, setIsAdvertisementEdit] = React.useState(null);
 
   const handleAdd = () => {
     dispatch(setIsAdd(true));
+    setIsAdvertisementEdit(null);
   };
   return (
     <>
@@ -30,13 +32,16 @@ const Advertisement = () => {
             />
             <div className="p-8">
               <div className="flex justify-between items-center">
-                <SearchBar />
+                <div></div>
                 <button className="btn btn-add" onClick={handleAdd}>
                   <Plus size={16} />
                   Add New
                 </button>
               </div>
-              <AdvertisementTable />
+              <AdvertisementTable
+                isAdvertisementEdit={isAdvertisementEdit}
+                setIsAdvertisementEdit={setIsAdvertisementEdit}
+              />
             </div>
 
             <Footer />
@@ -47,7 +52,12 @@ const Advertisement = () => {
       {store.error && <ModalError />}
       {store.success && <ToastSucess />}
 
-      {store.isAdd && <ModalAddAdvertisement />}
+      {store.isAdd && (
+        <ModalAddAdvertisement
+          isAdvertisementEdit={isAdvertisementEdit}
+          setIsAdvertisementEdit={setIsAdvertisementEdit}
+        />
+      )}
     </>
   );
 };

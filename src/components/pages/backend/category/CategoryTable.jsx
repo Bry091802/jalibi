@@ -222,60 +222,6 @@ const CategoryTable = ({ setIsCategoryEdit }) => {
                   })}
                 </React.Fragment>
               ))}
-
-              {/* {result?.count > 0 &&
-                result.data.map((item, key) => (
-                  <tr key={key}>
-                    <td>{counter++}.</td>
-                    <td>
-                      {item.category_is_active === 1 ? (
-                        <Status text="Active" />
-                      ) : (
-                        <Status text="Inactive" />
-                      )}
-                    </td>
-                    <td>{item.category_title}</td>
-                    <td>
-                      <ul className="table-action">
-                        {item.category_is_active === 1 ? (
-                          <>
-                            <li>
-                              <button className="tooltip" data-tooltip="Edit">
-                                <FilePenLine onClick={() => handleEdit(item)} />
-                              </button>
-                            </li>
-                            <li>
-                              <button
-                                className="tooltip"
-                                data-tooltip="Archive"
-                              >
-                                <Archive onClick={() => handleArchive(item)} />
-                              </button>
-                            </li>
-                          </>
-                        ) : (
-                          <>
-                            <li>
-                              <button
-                                className="tooltip"
-                                data-tooltip="Restore"
-                              >
-                                <ArchiveRestore
-                                  onClick={() => handleRestore(item)}
-                                />
-                              </button>
-                            </li>
-                            <li>
-                              <button className="tooltip" data-tooltip="Delete">
-                                <Trash2 onClick={() => handleDelete(item)} />
-                              </button>
-                            </li>
-                          </>
-                        )}
-                      </ul>
-                    </td>
-                  </tr>
-                ))} */}
             </tbody>
           </table>
 
