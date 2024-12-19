@@ -47,6 +47,10 @@ const SearchBarWithFilterStatus = ({
     }
   };
 
+  const resultCount = result?.pages[0]?.total
+    ? result?.pages[0]?.total
+    : result?.pages[0]?.count;
+
   return (
     <form
       onSubmit={(e) => {
@@ -69,7 +73,7 @@ const SearchBarWithFilterStatus = ({
             </optgroup>
           </select>
           <p className="leading-none flex items-center gap-2">
-            <FaList /> {isFetching ? "Searching..." : result?.pages[0].count}
+            <FaList /> {isFetching ? "Searching..." : resultCount}
           </p>
         </div>
         <div className="search relative">

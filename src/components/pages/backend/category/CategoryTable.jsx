@@ -198,7 +198,7 @@ const CategoryTable = ({ setIsCategoryEdit }) => {
                                 <button
                                   type="button"
                                   className="tooltip"
-                                  data-tooltip="Delete"
+                                  data-tooltip="Restore"
                                   disabled={isFetching}
                                   onClick={() => handleRestore(item)}
                                 >

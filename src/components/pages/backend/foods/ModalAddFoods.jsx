@@ -24,7 +24,8 @@ import useQueryData from "@/components/custom-hook/useQueryData";
 
 const ModalAddFoods = ({ itemEdit }) => {
   const { dispatch } = React.useContext(StoreContext);
-  const { uploadPhoto, handleChangePhoto, photo } = useUploadPhoto("");
+  const { uploadPhoto, handleChangePhoto, photo } =
+    useUploadPhoto("/v2/upload-photo");
   const [value, setValue] = React.useState("");
 
   const handleClose = () => {
@@ -99,6 +100,7 @@ const ModalAddFoods = ({ itemEdit }) => {
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values) => {
+              uploadPhoto();
               mutation.mutate({
                 ...values,
                 food_image:
@@ -109,7 +111,6 @@ const ModalAddFoods = ({ itemEdit }) => {
                     ? photo?.name || ""
                     : itemEdit?.food_image || "",
               });
-              uploadPhoto();
             }}
           >
             {(props) => {
@@ -175,13 +176,12 @@ const ModalAddFoods = ({ itemEdit }) => {
                       </div>
 
                       <div className="input-wrap">
-                        <label htmlFor="">Category</label>
                         <InputSelect
                           label="Food Category"
                           name="food_category_id"
                           onClick={handleChange}
                         >
-                          <option value="hidden"></option>
+                          <option value="" hidden></option>
                           {categ?.data.map((item, key) => {
                             return (
                               <>
