@@ -2,6 +2,7 @@ import Advertisement from "@/components/pages/backend/advertisement/Advertisemen
 import Category from "@/components/pages/backend/category/Category";
 import Dashboard from "@/components/pages/backend/dashboard/Dashboard";
 import Foods from "@/components/pages/backend/foods/Foods";
+import Developer from "@/components/pages/backend/settings/developer/Developer";
 import Role from "@/components/pages/backend/settings/role/Role";
 import Settings from "@/components/pages/backend/settings/Settings";
 import User from "@/components/pages/backend/settings/user/User";
@@ -28,15 +29,15 @@ export const routeDeveloper = [
     element: <Settings />,
   },
   {
-    route: `/developer/role`,
+    route: `/developer/settings/role`,
     element: <Role />,
   },
   {
-    route: `/developer/users`,
+    route: `/developer/settings/users`,
     element: <User />,
   },
   {
-    route: `/developer/developer`,
-    element: <Role />,
+    route: `/developer/settings/developer`,
+    element: <Developer/>,
   },
 ];

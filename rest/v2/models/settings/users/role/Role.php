@@ -24,7 +24,7 @@ class Role
   public function __construct($db)
   {
     $this->connection = $db;
-    $this->tblRole = "jollibee_settings_role";
+    $this->tblRole = "jollibee_setting_role";
   }
 
 
@@ -108,7 +108,7 @@ class Role
   }
 
 
-  public function checkName()
+public function checkName()
   {
     try {
       $sql = "select role_name from {$this->tblRole} ";

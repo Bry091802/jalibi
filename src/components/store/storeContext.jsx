@@ -13,6 +13,7 @@ const initVal = {
   isDelete: false,
   isAdd: false,
   isView: false,
+  isCreatePassSuccess: false,
   isAnimating: true,
 };
 
