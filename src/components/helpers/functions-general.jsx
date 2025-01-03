@@ -19,6 +19,11 @@ export const getUrlParam = () => {
   return urlParams;
 };
 
+// storage after login
+export function setStorageRoute(jwt) {
+  localStorage.setItem("jollibeetoken", JSON.stringify({ token: jwt }));
+}
+
 export const fetchFormData = (url, fd = {}) => {
   console.log(fd);
   const data = fetch(url, {

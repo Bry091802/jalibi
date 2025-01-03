@@ -28,6 +28,26 @@ export const StoreReducer = (state, action) => {
         ...state,
         isCreatePassSuccess: action.payload,
       };
+    case "IS_ACCOUNT_UPDATED":
+      return {
+        ...state,
+        isAccountUpdated: action.payload,
+      };
+    case "IS_LOGIN":
+      return {
+        ...state,
+        isLogin: action.payload,
+      };
+    case "IS_LOGOUT":
+      return {
+        ...state,
+        isLogout: action.payload,
+      };
+    case "CREDENTIALS":
+      return {
+        ...state,
+        credentials: action.payload,
+      };
 
     case "VALIDATE":
       return {

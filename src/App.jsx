@@ -9,6 +9,7 @@ import { StoreProvider } from "./components/store/storeContext";
 import { routeAdmin } from "./routes/routesAdmin";
 import { routeDeveloper } from "./routes/RoutesDeveloper";
 import DeveloperCreatePassword from "./components/pages/backend/access/create-password/DeveloperCreatePassword";
+import DeveloperLogin from "./components/pages/backend/access/DeveloperLogin";
 const App = () => {
   const queryClient = new QueryClient();
   return (
@@ -36,6 +37,8 @@ const App = () => {
               index
               element={<DeveloperCreatePassword />}
             />
+            <Route path="/developer/login" index element={<DeveloperLogin />} />
+
             <Route path="/admin/login" index element={<Login />} />
             <Route path="/admin/setpassword" index element={<SetPassword />} />
             <Route

@@ -19,10 +19,11 @@ import { Form, Formik } from "formik";
 import * as Yup from "Yup";
 import { InputText } from "@/components/helpers/FormInputs";
 import useQueryData from "@/components/custom-hook/useQueryData";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryData } from "@/components/helpers/queryData";
 import { setError, setMessage } from "@/components/store/storeAction";
 import SpinnerButton from "../../partials/spinners/SpinnerButton";
+import FetchingSpinner from "@/components/partials/spinner/FetchingSpinner";
 
 const DeveloperCreatePassword = () => {
   const [theme, setTheme] = React.useState(localStorage.getItem("theme"));
@@ -39,6 +40,7 @@ const DeveloperCreatePassword = () => {
   const [specialValidated, setSpecialValidated] = React.useState(false);
   const [lengthValidated, setLengthValidated] = React.useState(false);
   const paramKey = getUrlParam().get("key");
+  const queryClient = useQueryClient();
 
   const { isLoading, data: key } = useQueryData(
     `/v2/developer/key/${paramKey}`,
@@ -48,17 +50,18 @@ const DeveloperCreatePassword = () => {
   const mutation = useMutation({
     mutationFn: (values) => queryData(`/v2/developer/password`, "post", values),
     onSuccess: (data) => {
-      QueryClient.invalidateQueries({ queries: ["developer"] });
+      queryClient.invalidateQueries({ queries: ["developer"] });
       if (!data.success) {
         dispatch(setError(true));
         dispatch(setMessage(data.error));
       } else {
-        if (store.isCreatePassSuccess) {
-          dispatch(setCreatePassSuccess(false));
-          navigate(
-            `${devNavUrl}/create-password-success?redirect=/developer/login`
-          );
-        }
+        //   if (store.isCreatePassSuccess) {
+        //     dispatch(setCreatePassSuccess(false));
+        //     navigate(
+        //       `${devNavUrl}/create-password-success?redirect=/developer/login`
+        //     );
+        //   }
+        setSuccess(true);
       }
     },
   });
@@ -124,6 +127,7 @@ const DeveloperCreatePassword = () => {
   const initVal = {
     new_password: "",
     confirm_password: "",
+    key: paramKey,
   };
 
   const yupSchema = Yup.object({
@@ -161,12 +165,16 @@ const DeveloperCreatePassword = () => {
               Back to Login
             </Link>
           </div>
+        ) : isLoading ? (
+          <FetchingSpinner />
+        ) : key?.count === 0 || paramKey === null || paramKey === "" ? (
+          "Invalid Page"
         ) : (
           <Formik
             initialValues={initVal}
             validationSchema={yupSchema}
             onSubmit={async (values) => {
-              console.log(values);
+              mutation.mutate(values);
             }}
           >
             {(props) => {
@@ -297,12 +305,15 @@ const DeveloperCreatePassword = () => {
                   </Link>
                   <button
                     className="btn btn-accent w-full center-all mt-5"
-                    onClick={() => setSuccess(true)}
+                    // onClick={() => setSuccess(true)}
+                    disabled={
+                      mutation.isPending ||
+                      props.values.new_password === "" ||
+                      props.values.confirm_password === ""
+                    }
                     type="submit"
                   >
-                    {" "}
-                    <SpinnerButton />
-                    Set Password
+                    {mutation.isPending ? <SpinnerButton /> : "Set Password"}
                   </button>
                 </Form>
               );

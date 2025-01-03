@@ -20,6 +20,8 @@ import IconNoData from "../../partials/IconNoData";
 import { useInView } from "react-intersection-observer";
 import SearchBarWithFilterStatus from "@/components/partials/SearchBarWithFilterStatus";
 import { useInfiniteQuery } from "@tanstack/react-query";
+import { FaArchive, FaEdit, FaTrash, FaTrashRestore } from "react-icons/fa";
+import { queryDataInfinite } from "@/components/helpers/queryDataInfinite";
 
 const DeveloperList = ({ setItemEdit }) => {
   const { store, dispatch } = React.useContext(StoreContext);
@@ -35,20 +37,20 @@ const DeveloperList = ({ setItemEdit }) => {
   const handleEdit = (item) => {
     dispatch(setIsAdd(true));
     setItemEdit(item);
-    setIsId(item.developer_aid);
+    setIsId(item.user_developer_aid);
   };
   const handleDelete = (item) => {
     dispatch(setIsDelete(true));
-    setIsId(item.developer_aid);
+    setIsId(item.user_developer_aid);
     setDataItem(item);
   };
   const handleRestore = (item) => {
     dispatch(setIsRestore(true));
-    setIsId(item.developer_aid);
+    setIsId(item.user_developer_aid);
   };
   const handleArchive = (item) => {
     dispatch(setIsArchive(true));
-    setIsId(item.developer_aid);
+    setIsId(item.user_developer_aid);
   };
 
   const {
@@ -106,7 +108,7 @@ const DeveloperList = ({ setItemEdit }) => {
         />
       </div>
       <div className="p-4 bg-secondary rounded-md mt-10 border border-line relative">
-        {isFetching && !isLoading && <FetchingSpinner />}
+        {/* {isFetching && !isLoading && <FetchingSpinner />} */}
         <div className="table-wrapper custom-scroll">
           <table>
             <thead>
@@ -155,6 +157,10 @@ const DeveloperList = ({ setItemEdit }) => {
                           )}
                         </td>
                         <td>{item.user_developer_email}</td>
+                        <td>
+                          {item.user_developer_first_name}{" "}
+                          {item.user_developer_last_name}
+                        </td>
                         <td
                           colSpan="100%"
                           className="opacity-0 group-hover:opacity-100"
@@ -213,7 +219,15 @@ const DeveloperList = ({ setItemEdit }) => {
             </tbody>
           </table>
 
-          <LoadMore />
+          <LoadMore
+            fetchNextPage={fetchNextPage}
+            isFetchingNextPage={isFetchingNextPage}
+            hasNextPage={hasNextPage}
+            result={result?.pages[0]}
+            setPage={setPage}
+            page={page}
+            refView={ref}
+          />
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+import useQueryData from "@/components/custom-hook/useQueryData";
 import ModalError from "@/components/partials/modal/ModalError";
 import ModalSuccess from "@/components/partials/modal/modalSuccess";
 import { setError, setIsAdd, setMessage } from "@/components/store/storeAction";
@@ -7,11 +8,8 @@ import React from "react";
 import Footer from "../../partials/Footer";
 import Header from "../../partials/Header";
 import SideNavigation from "../../partials/SideNavigation";
-import ModalAddUser from "./ModalAddDeveloper";
-import UserList from "./DeveloperList";
 import DeveloperList from "./DeveloperList";
 import ModalAddDeveloper from "./ModalAddDeveloper";
-import useQueryData from "@/components/custom-hook/useQueryData";
 
 const Developer = () => {
   const [itemEdit, setItemEdit] = React.useState(null);
