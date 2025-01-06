@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2024 at 01:30 AM
+-- Generation Time: Jan 06, 2025 at 12:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -97,6 +97,56 @@ INSERT INTO `jollibee_food` (`food_aid`, `food_is_active`, `food_image`, `food_t
 (30, 1, 'dessert-2.webp', 'Ube Pie', 40, 13, '2024-12-11 15:48:24', 2024),
 (31, 1, 'dessert-3.webp', 'Peach Mango Pie', 40, 13, '2024-12-11 15:48:50', 2024);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jollibee_settings_role`
+--
+
+CREATE TABLE `jollibee_settings_role` (
+  `role_aid` int(11) NOT NULL,
+  `role_is_active` tinyint(1) NOT NULL,
+  `role_name` varchar(50) NOT NULL,
+  `role_description` text NOT NULL,
+  `role_created` datetime NOT NULL,
+  `role_datetime` datetime NOT NULL,
+  `role_is_developer` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jollibee_settings_role`
+--
+
+INSERT INTO `jollibee_settings_role` (`role_aid`, `role_is_active`, `role_name`, `role_description`, `role_created`, `role_datetime`, `role_is_developer`) VALUES
+(5, 1, 'Developer', 'developer', '2024-12-16 15:21:15', '2025-01-02 13:52:46', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jollibee_settings_user_developer`
+--
+
+CREATE TABLE `jollibee_settings_user_developer` (
+  `user_developer_aid` int(11) NOT NULL,
+  `user_developer_is_active` tinyint(1) NOT NULL,
+  `user_developer_first_name` varchar(128) NOT NULL,
+  `user_developer_last_name` varchar(128) NOT NULL,
+  `user_developer_email` varchar(128) NOT NULL,
+  `user_developer_new_email` varchar(128) NOT NULL,
+  `user_developer_role_id` int(11) NOT NULL,
+  `user_developer_key` varchar(255) NOT NULL,
+  `user_developer_password` varchar(255) NOT NULL,
+  `user_developer_created` datetime NOT NULL,
+  `user_developer_datetime` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `jollibee_settings_user_developer`
+--
+
+INSERT INTO `jollibee_settings_user_developer` (`user_developer_aid`, `user_developer_is_active`, `user_developer_first_name`, `user_developer_last_name`, `user_developer_email`, `user_developer_new_email`, `user_developer_role_id`, `user_developer_key`, `user_developer_password`, `user_developer_created`, `user_developer_datetime`) VALUES
+(1, 1, 'Bryan', 'Maligaya', 'bryanmaligaya3@gmail.com', '', 5, '', '$2y$10$NI9eIj42Z8OCIVdpUQqVG.DTLcHm1E4pBSBpZaCGnIQ4kJcUpWfwm', '2025-01-02 14:35:04', '2025-01-03 13:50:28');
+
 --
 -- Indexes for dumped tables
 --
@@ -114,6 +164,18 @@ ALTER TABLE `jollibee_food`
   ADD PRIMARY KEY (`food_aid`);
 
 --
+-- Indexes for table `jollibee_settings_role`
+--
+ALTER TABLE `jollibee_settings_role`
+  ADD PRIMARY KEY (`role_aid`);
+
+--
+-- Indexes for table `jollibee_settings_user_developer`
+--
+ALTER TABLE `jollibee_settings_user_developer`
+  ADD PRIMARY KEY (`user_developer_aid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -128,6 +190,18 @@ ALTER TABLE `jollibee_category`
 --
 ALTER TABLE `jollibee_food`
   MODIFY `food_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `jollibee_settings_role`
+--
+ALTER TABLE `jollibee_settings_role`
+  MODIFY `role_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `jollibee_settings_user_developer`
+--
+ALTER TABLE `jollibee_settings_user_developer`
+  MODIFY `user_developer_aid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

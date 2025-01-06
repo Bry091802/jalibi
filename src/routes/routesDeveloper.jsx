@@ -1,49 +1,79 @@
 import DeveloperProtectedRoute from "@/components/pages/backend/access/DeveloperProtectedRoute";
-import Advertisement from "@/components/pages/backend/advertisement/Advertisement";
-import Category from "@/components/pages/backend/category/Category";
-import Dashboard from "@/components/pages/backend/dashboard/Dashboard";
-import Foods from "@/components/pages/backend/foods/Foods";
-import Developer from "@/components/pages/backend/settings/developer/Developer";
-import Role from "@/components/pages/backend/settings/role/Role";
-import Settings from "@/components/pages/backend/settings/Settings";
-import User from "@/components/pages/backend/settings/user/User";
+import Advertisement from "@/components/pages/backend/developer/advertisement/Advertisement";
+import Category from "@/components/pages/backend/developer/category/Category";
+
+import Dashboard from "@/components/pages/backend/developer/dashboard/Dashboard";
+import Foods from "@/components/pages/backend/developer/foods/Foods";
+import Developer from "@/components/pages/backend/developer/settings/developer/Developer";
+import Role from "@/components/pages/backend/developer/settings/role/Role";
+import Settings from "@/components/pages/backend/developer/settings/Settings";
+import User from "@/components/pages/backend/developer/settings/user/User";
+
 
 export const routeDeveloper = [
   {
     route: `/developer/`,
     element: (
       <DeveloperProtectedRoute>
-        <Developer />
+        <Dashboard />
       </DeveloperProtectedRoute>
     ),
   },
   {
     route: `/developer/dashboard`,
-    element: <Dashboard />,
+    element: (
+      <DeveloperProtectedRoute>
+        <Dashboard />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/category`,
-    element: <Category />,
+    element: (
+      <DeveloperProtectedRoute>
+        <Category />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/advertisement`,
-    element: <Advertisement />,
+    element: (
+      <DeveloperProtectedRoute>
+        <Advertisement />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/foods`,
-    element: <Foods />,
+    element: (
+      <DeveloperProtectedRoute>
+        <Foods />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/settings`,
-    element: <Settings />,
+    element: (
+      <DeveloperProtectedRoute>
+        <Settings />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/settings/role`,
-    element: <Role />,
+    element: (
+      <DeveloperProtectedRoute>
+        <Role />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/settings/users`,
-    element: <User />,
+    element: (
+      <DeveloperProtectedRoute>
+        <User />
+      </DeveloperProtectedRoute>
+    ),
   },
   {
     route: `/developer/settings/developer`,

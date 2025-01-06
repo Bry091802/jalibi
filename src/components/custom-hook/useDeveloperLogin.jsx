@@ -16,7 +16,7 @@ const useDeveloperLogin = (navigate) => {
         token: checkLocalStorage().token,
       });
 
-      if (typeof login === "undefined" || !login.sucess) {
+      if (typeof login === "undefined" || !login.success) {
         localStorage.removeItem("jollibeetoken");
         setLoginLoading(false);
       } else {

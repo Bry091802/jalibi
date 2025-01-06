@@ -1,7 +1,9 @@
 import { ChevronDown, Dot } from "lucide-react";
 import React from "react";
-import IconNoData from "../partials/IconNoData";
 import { getFoodByCategory } from "./function";
+import IconNoData from "../partials/IconNoData";
+import TableLoader from "../partials/TableLoader";
+import FetchingSpinner from "@/components/partials/spinner/FetchingSpinner";
 
 const DashboardAccordion = ({ item, dataFood }) => {
   const [isOpen, setIsOpen] = React.useState(false);

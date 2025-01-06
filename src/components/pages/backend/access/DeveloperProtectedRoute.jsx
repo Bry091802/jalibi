@@ -4,7 +4,7 @@ import FetchingSpinner from "@/components/partials/spinner/FetchingSpinner";
 import { setCredentials } from "@/components/store/storeAction";
 import { StoreContext } from "@/components/store/storeContext";
 import React from "react";
-import { Navigate, } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const DeveloperProtectedRoute = ({ children }) => {
   const { dispatch, store } = React.useContext(StoreContext);
@@ -19,7 +19,7 @@ const DeveloperProtectedRoute = ({ children }) => {
         token: jollibeetoken.token,
       });
 
-      if (typeof login === "undefined" || !login.sucess) {
+      if (typeof login === "undefined" || !login.success) {
         setLoading(false);
         setIsAuth("456");
       } else {
@@ -40,7 +40,7 @@ const DeveloperProtectedRoute = ({ children }) => {
       }
 
       if (
-         !login.success 
+        !login.success
         //||
         // login.data.role.toLowercase() !== login.data.role_name.toLowercase()
       ) {
